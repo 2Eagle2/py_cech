@@ -23,9 +23,10 @@ def list_one(name):
     if borrower_in_database(name):
         with open("dlznici.json") as f:
             data = [json.load(f)]
-
+            found = [data for user in data if user['name'] == name]
+            return found
     else:
-        print("Dlžník nieje na zozname")
+        return("Dlžník nieje na zozname")
 
 
 def new_borrower(name, value):
@@ -80,4 +81,3 @@ def delete_all():
     :return:
     """
     pass
-
