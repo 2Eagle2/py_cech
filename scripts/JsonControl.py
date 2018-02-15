@@ -11,7 +11,7 @@ def list_of_all():
     :return:
     """
     with open("dlznici.json") as f:
-        data = json.load(f)
+        data = [json.load(f)]
         return data
 
 def list_one(name):
@@ -22,7 +22,7 @@ def list_one(name):
     """
     if borrower_in_database(name):
         with open("dlznici.json") as f:
-            data = json.load(f)
+            data = [json.load(f)]
 
     else:
         print("Dlžník nieje na zozname")
@@ -69,11 +69,9 @@ def borrower_in_database(name):
     :return:
     """
     with open("dlznici.json") as f:
-        data = json.load(f)
-        if name in data:
-            return True
-        else:
-            return False
+        data = [json.load(f)]
+        found = [data for user in data if user['name'] == name]
+        return len(found) > 0
 
 
 def delete_all():
@@ -82,3 +80,4 @@ def delete_all():
     :return:
     """
     pass
+
