@@ -27,7 +27,6 @@ def main():
 
     args = vars(a_parser.parse_args())
 
-    print(args)
     pycech(**args)
 
 
