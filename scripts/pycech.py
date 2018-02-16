@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-from scripts import cech
+import cech
 
 
 def main():
@@ -70,7 +70,7 @@ def pycech(status, clear, name=None, give=None, take=None) -> None:
             cech.return_cech(name, give)
 
         elif take is not None:
-            cech.takes_cech(name, give)
+            cech.takes_cech(name, take)
 
         else:
             user_cech = cech.return_one_borrower(name)
