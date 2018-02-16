@@ -10,16 +10,27 @@ TC_prázdny cech
     zoznam by mal byť prázdny
 
 TC_overenie dlžnika v zozname
-    when meno dlžnika
-    given nema ešte cech
-    then pridanie do zoznamu
+    vyprázdníme cech
+    dlžník Fero nie je v zozname
+    dlžník Miso nie je v zozname
 
 TC_zmazanie dlžnika zo zoznamu
-    when meno dlžnika zo zonamu
-    given zaplatenie cechu
-    then zmazanie dlžnika zo zonamu
+    vyprázdníme cech
+    dlžník Fero si požičia 1000
+    dlžník Mišo si požičia 1000
+    dlžník Fero je v zozname
+    dlžník Mišo je v zozname
+    dlžník Fero vráti 1000
+    dlžník Fero nie je v zozname
+    dlžník Mišo je v zozname
 
 TC_odčítanie dlhu
-    when meno dlžníka zo zoznamu
-    given odčítaj nejakú sumu
-    then suma zvyšného dlhu
+    vyprázdníme cech
+    dlžník Fero si požičia 1000
+    odcitanie dlhu
+    dlžník Fero má dlh
+
+TC_pridanie dlžnika
+    vyprázdníme cech
+    dlžník ${dlžník} si požičia ${dlh}    Fero    100
+    dlh Fero by mal byť ${suma}
