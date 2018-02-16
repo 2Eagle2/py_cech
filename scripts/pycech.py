@@ -65,18 +65,16 @@ def pycech(status, clear, name=None, give=None, take=None) -> None:
         pass
 
     elif name is not None:
-        user_cech = cech.list_one(name)
 
         if give is not None:
-            print(name + " - " + str(give))
-            pass
+            cech.return_cech(name, give)
 
         elif take is not None:
-            print(name + " + " + str(take))
-            pass
+            cech.takes_cech(name, give)
 
         else:
-            print(name + " have loan ")
+            user_cech = cech.return_one_borrower(name)
+            print_users(user_cech)
 
     else:
         # empty arg list do not print anything
