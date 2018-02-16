@@ -5,16 +5,17 @@ ovládanie práce s json súborom
 import json
 
 
+
 def list_of_all():
     """
     výpiše zoznam všetkých dlžníkov aj výškou dlhu
     :return:
     """
     with open("dlznici.json") as f:
-        data = [json.load(f)]
+        data = json.load(f)
         return data
 
-def list_one(name):
+def return_one_borrower(name):
     """
     vypíše cech zadaného dlžníka
     :param name:
@@ -36,7 +37,13 @@ def new_borrower(name, value):
     :param value:
     :return:
     """
-    pass
+    data = {"name" : name, "value" : value }
+    if borrower_in_database(name):
+        return ("Dlžník už je na zozname")
+    else:
+        with open("dlznici.json", "a") as f:
+            json.dump(data, f)
+
 
 def takes_cech(name, value):
     """
@@ -81,3 +88,6 @@ def delete_all():
     :return:
     """
     pass
+
+
+new_borrower("ujaa", 54)

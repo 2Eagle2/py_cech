@@ -1,12 +1,13 @@
 *** Settings ***
 Documentation     - kontrola vzniku uživateľa pri vzniku dlhu pokiaľ neexistuje
 ...               - kontrola pripisani dlhu pokiaľ uživatel niečo dlží
+Library           OperatingSystem
+Resource          Keywords.robot
 
 *** Test Cases ***
 TC_prázdny cech
-    when cech je prázdny
-    given zoznam dlžníkov
-    then zoznam by mal byť prázdny
+    vyprázdníme cech
+    zoznam by mal byť prázdny
 
 TC_overenie dlžnika v zozname
     when meno dlžnika
@@ -22,16 +23,3 @@ TC_odčítanie dlhu
     when meno dlžníka zo zoznamu
     given odčítaj nejakú sumu
     then suma zvyšného dlhu
-
-*** Keywords ***
-prázdny zoznam
-    status    je prázdny
-
-odčítanie dlhu
-    returns
-
-pridanie dlhu
-    takes
-
-zmazanie cechu
-    clear
